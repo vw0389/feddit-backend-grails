@@ -4,13 +4,17 @@ class Post {
     String title
     String content
     Date dateModifiedAt
-    User user
+    static belongsTo = [user:User]
     Date dateCreated
     static hasMany = [comment:Comment]
+    Boolean deleted
     static constraints = {
+        title nullable: false, blank: false
+        content nullable: false, blank: false
+        dateModifiedAt nullable: true
     }
     static mapping = {
-        autoTimestamp true
         deleted defaultValue: "0"
+        content sqlType: "longtext"
     }
 }

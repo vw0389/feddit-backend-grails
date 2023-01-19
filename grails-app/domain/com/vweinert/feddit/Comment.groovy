@@ -9,10 +9,9 @@ class Comment {
     Date dateCreated
     static constraints = {
         content nullable: false, blank: false
-        modifiedAt nullable: true
+        dateModifiedAt nullable: true
     }
     static mapping = {
-        autoTimestamp true
         deleted defaultValue: "0"
         content sqlType: "longtext"
     }
