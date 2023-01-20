@@ -1,5 +1,8 @@
 package com.vweinert.feddit
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class Post {
     String title
     String content
@@ -7,7 +10,7 @@ class Post {
     static belongsTo = [user:User]
     Date dateCreated
     static hasMany = [comment:Comment]
-    Boolean deleted
+    Boolean deleted = false
     static constraints = {
         title nullable: false, blank: false
         content nullable: false, blank: false

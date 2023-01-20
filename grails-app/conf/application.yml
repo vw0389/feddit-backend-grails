@@ -19,10 +19,16 @@ spring:
     groovy:
         template:
             check-template-location: false
+    jackson:
+        deserialization:
+          fail-on-unknown-properties: true
+        default-property-inclusion: non_null
+        serialization:
+          indent-output: true
 
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
-    enabled: false
+    enabled: true
     jmx:
         enabled: true
 
@@ -61,6 +67,14 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+    plugin:
+        springsecurity:
+            password:
+                algorithm: "bcrypt"
+
+server:
+    contextPath: /api
+
 
 ---
 hibernate:
@@ -81,6 +95,14 @@ environments:
         dataSource:
             dbCreate: create-drop
             url: jdbc:mysql://localhost:3306/feddit
+        grails:
+            logging:
+                jul:
+                    usebridge: true
+            plugin:
+                springsecurity:
+                    debug:
+                        useFilter: true
 #    test:
 #        dataSource:
 #            dbCreate: update

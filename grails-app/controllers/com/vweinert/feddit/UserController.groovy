@@ -5,14 +5,20 @@ import grails.rest.*
 import grails.converters.*
 
 class UserController {
-	static responseFormats = ['json', 'xml']
-	static allowedMethods = [registerUser:'POST']
-    def index() { }
+    static allowedMethods = [login:'POST', signup: 'POST']
+    def login(User user) {
+        if (!user.save()) {
+            user.errors.allErrors.each {
+                println it
+            }
+        }
+        render user as JSON
 
-    def registerUser(User user) {
+    }
+    def signup(User user) {
+        render "${user}"
         if (user.getId() != null) {
             respond("tried to post with ID already set")
         }
-
     }
 }
