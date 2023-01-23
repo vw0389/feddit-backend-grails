@@ -1,9 +1,16 @@
 package com.vweinert.feddit
 
 import grails.compiler.GrailsCompileStatic
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
 @GrailsCompileStatic
-class Post {
+@EqualsAndHashCode(includes='title, content')
+@ToString(includes='title,username', includeNames=true, includePackage=false)
+class Post implements Serializable{
+
+    private static final long serialVersionUID = 1
+
     String title
     String content
     Date dateModifiedAt

@@ -1,9 +1,16 @@
 package com.vweinert.feddit
 
 import grails.compiler.GrailsCompileStatic
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
 @GrailsCompileStatic
-class Comment {
+@EqualsAndHashCode(includes='content')
+@ToString(includes='content', includeNames=true, includePackage=false)
+class Comment implements Serializable{
+
+    private static final long serialVersionUID = 1
+
     String content
     Date dateModifiedAt
 

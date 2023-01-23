@@ -69,6 +69,9 @@ grails:
         encoding: UTF-8
     plugin:
         springsecurity:
+            rejectIfNoRule: false
+            fii:
+                rejectPublicInvocations: false
             password:
                 algorithm: "bcrypt"
 
@@ -108,3 +111,6 @@ environments:
 #            dbCreate: update
 #            url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
 
+logging:
+    level:
+        root: info
